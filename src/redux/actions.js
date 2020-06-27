@@ -1,0 +1,15 @@
+import {FETCH_IMAGE_SUCCESS, REQUEST_IMAGE} from "./types";
+
+export const fetchImageSuccess = (image) => {
+    return {
+        type: FETCH_IMAGE_SUCCESS,
+        image
+    }
+};
+
+
+export const fetchImage = () => {
+    return {
+        type: REQUEST_IMAGE,
+    }
+};
