@@ -5,10 +5,9 @@ import {sagaWatcher} from "./sagas";
 
 const saga = createSagaMiddleware();
 
-
 const rootReducer = combineReducers({
-    images: imagesReducer
-});
+    images: imagesReducer,
+    });
 
 const store = createStore(rootReducer, compose(
     applyMiddleware(

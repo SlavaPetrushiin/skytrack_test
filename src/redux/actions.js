@@ -1,4 +1,4 @@
-import {FETCH_IMAGE_SUCCESS, REQUEST_IMAGE} from "./types";
+import {DOWNLOAD_IMAGES, FETCH_IMAGE_SUCCESS, REQUEST_IMAGE} from "./types";
 
 export const fetchImageSuccess = (image) => {
     return {
@@ -11,5 +11,12 @@ export const fetchImageSuccess = (image) => {
 export const fetchImage = () => {
     return {
         type: REQUEST_IMAGE,
+    }
+};
+
+export const downloadImages = (images) => {
+    return {
+        type: DOWNLOAD_IMAGES,
+        images
     }
 };

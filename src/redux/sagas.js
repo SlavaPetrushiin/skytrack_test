@@ -6,17 +6,22 @@ export function* sagaWatcher() {
     yield takeEvery(REQUEST_IMAGE, sagaWorker)
 }
 
-
 function* sagaWorker() {
     const payload = yield call(fetchImage);
 
     const image = {
         title: payload.data.title,
-        date: new Date(),
-        url: payload.data.fixed_height_small_url
+        date: new Date().toString(),
+        url: payload.data.image_url
     };
 
-    yield put(fetchImageSuccess(image))
+    if(localStorage.getItem('images')){
+        const images = JSON.parse(localStorage.getItem('images'));
+        const newImages = [...images, image];
+        localStorage.setItem ("images", JSON.stringify(newImages));
+    }
+
+    yield put(fetchImageSuccess(image));
 }
 
 async function fetchImage(){
