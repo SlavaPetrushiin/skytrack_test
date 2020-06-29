@@ -2,11 +2,13 @@ import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import createSagaMiddleware from "redux-saga";
 import imagesReducer from "./imagesReducer";
 import {sagaWatcher} from "./sagas";
+import alertReducer from "./alertReducer";
 
 const saga = createSagaMiddleware();
 
 const rootReducer = combineReducers({
     images: imagesReducer,
+    error: alertReducer
     });
 
 const store = createStore(rootReducer, compose(

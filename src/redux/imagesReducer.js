@@ -1,8 +1,8 @@
-import {DOWNLOAD_IMAGES, FETCH_IMAGE_SUCCESS} from "./types";
+import {DOWNLOAD_IMAGES, FETCH_IMAGE_ERROR, FETCH_IMAGE_SUCCESS} from "./types";
 
 const initialState = {
     image: {},
-    images: []
+    images: [],
 };
 
 const imagesReducer = (state = initialState, action) => {
@@ -11,12 +11,14 @@ const imagesReducer = (state = initialState, action) => {
             return {
                 ...state,
                 image: action.image,
-                images: [...state.images, action.image]
+                images: [...state.images, action.image],
+                error: null
             };
         case DOWNLOAD_IMAGES:
             return {
                 ...state,
-                images:  [...action.images]
+                images:  [...action.images],
+                error: null
             };
         default:
             return state
