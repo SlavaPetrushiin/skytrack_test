@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/skytrack_test/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/skytrack_test/static/js/main.e45b233f.chunk.js",
+    "main.js.map": "/skytrack_test/static/js/main.e45b233f.chunk.js.map",
+    "runtime-main.js": "/skytrack_test/static/js/runtime-main.b06ae0fb.js",
+    "runtime-main.js.map": "/skytrack_test/static/js/runtime-main.b06ae0fb.js.map",
+    "static/js/2.17e81666.chunk.js": "/skytrack_test/static/js/2.17e81666.chunk.js",
+    "static/js/2.17e81666.chunk.js.map": "/skytrack_test/static/js/2.17e81666.chunk.js.map",
+    "index.html": "/skytrack_test/index.html",
+    "precache-manifest.be29c1108bc1f7857323b2c5e07eecba.js": "/skytrack_test/precache-manifest.be29c1108bc1f7857323b2c5e07eecba.js",
+    "service-worker.js": "/skytrack_test/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/skytrack_test/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.17e81666.chunk.js.LICENSE.txt": "/skytrack_test/static/js/2.17e81666.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b06ae0fb.js",
+    "static/js/2.17e81666.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.e45b233f.chunk.js"
+  ]
+}
