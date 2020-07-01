@@ -1,7 +1,7 @@
-import {FETCH_IMAGE_ERROR, HIDE_ALERT, SHOW_ALERT} from "./types";
+import {FETCH_IMAGE_ERROR} from "./types";
 
 const initialState = {
-    error: null
+    errorMessage: null
 };
 
 const alertReducer = (state=initialState, action) => {
@@ -9,7 +9,7 @@ const alertReducer = (state=initialState, action) => {
         case FETCH_IMAGE_ERROR:
             return {
                 ...state,
-                error: action.error
+                errorMessage: action.error
             };
         default:
             return state;

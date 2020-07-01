@@ -1,11 +1,11 @@
 import React from 'react';
 import Pagination from "@material-ui/lab/Pagination";
 
-const PaginationImages = ({paginationImagesCount, handleClick}) => {
+const PaginationImages = ({paginationImagesCount, handleClickPagination}) => {
         return (
             <Pagination
                 count={paginationImagesCount}
-                onChange={handleClick}
+                onChange={handleClickPagination}
                 color="primary"
             />
         );

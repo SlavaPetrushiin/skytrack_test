@@ -2,6 +2,7 @@ import {takeEvery, put, call} from "redux-saga/effects";
 import {REQUEST_IMAGE} from "./types";
 import {fetchImageError, fetchImageSuccess} from "./actions";
 import requestImageApi from "../api/requestImageApi";
+import storageApi from "../api/storageApi";
 
 export function* sagaWatcher() {
     yield takeEvery(REQUEST_IMAGE, requestImagesSaga)
@@ -12,12 +13,13 @@ function* requestImagesSaga() {
         const payload = yield call(fetchImage);
 
         const image = {
+            id: payload.image_url,
             title: payload.title,
             date: new Date().toString(),
             url: payload.image_url
         };
 
-        yield call(storage.saveImages.bind(storage), image);
+        yield call(()=> storageApi.saveImages(image));
 
         yield put(fetchImageSuccess(image));
     }
@@ -25,21 +27,6 @@ function* requestImagesSaga() {
         yield put(fetchImageError(error.message));
     }
 }
-
-const storage = {
-    KEYS: {
-        images: "images"
-    },
-
-    async saveImages(image) {
-        if(localStorage.getItem(this.KEYS.images)){
-            const images = JSON.parse(localStorage.getItem(this.KEYS.images));
-            const newImages = [...images, image];
-            localStorage.setItem (this.KEYS.images, JSON.stringify(newImages));
-        }
-    }
-};
-
 
 async function fetchImage(){
     const response = await requestImageApi.getImage();

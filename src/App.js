@@ -5,9 +5,8 @@ import HistoryPageContainer from "./pages/HistoryPage";
 import Container from '@material-ui/core/Container';
 import {makeStyles} from '@material-ui/core/styles';
 import {Route, Switch} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {downloadImages} from "./redux/actions";
-import Alert from "./components/Alert";
 import storageApi from "./api/storageApi";
 
 const useStyles = makeStyles({
@@ -19,20 +18,19 @@ const useStyles = makeStyles({
 function App() {
     const classes = useStyles();
     const dispatch = useDispatch();
-    // const error = useSelector(state => state.error);
 
     useEffect(() => {
         if(storageApi.getImages()){
             const images = storageApi.getImages();
             dispatch(downloadImages(images));
         }
-    }, []);
+    }, [dispatch]);  //
 
     return (
         <div>
             <ButtonAppBar/>
 
-            {/*{!!error ? <Alert /> : null}*/}
+            {/*{!!error && <AlertError errorMessage={error}/>}*/}
 
             <Container maxWidth="sm" className={classes.container}>
                 <Switch>

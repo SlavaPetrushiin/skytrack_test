@@ -1,4 +1,4 @@
-import {DOWNLOAD_IMAGES, FETCH_IMAGE_ERROR, FETCH_IMAGE_SUCCESS, REQUEST_IMAGE} from "./types";
+import {DELETE_IMAGE, DOWNLOAD_IMAGES, FETCH_IMAGE_ERROR, FETCH_IMAGE_SUCCESS, REQUEST_IMAGE} from "./types";
 
 export const fetchImageSuccess = (image) => {
     return {
@@ -24,5 +24,12 @@ export const downloadImages = (images) => {
     return {
         type: DOWNLOAD_IMAGES,
         images
+    }
+};
+
+export const deleteImages = (id) => {
+    return {
+        type: DELETE_IMAGE,
+        id
     }
 };

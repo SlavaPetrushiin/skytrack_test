@@ -19,7 +19,12 @@ const useStyles = makeStyles((theme) =>
             flexGrow: 1,
         },
         link:{
-            fontSize: 25
+            color: 'white',
+            textDecoration: 'none',
+            marginLeft: 20,
+            fontSize: '1.25rem',
+            fontWeight: 500,
+            letterSpacing: '0.0075em'
         }
     }),
 );
@@ -37,8 +42,8 @@ export default function ButtonAppBar() {
                     <Typography variant="h6" className={classes.title}>
                         Images
                     </Typography>
-                    <Link to={'/'}>Главная</Link>
-                    <Link to={'/history'}>История</Link>
+                    <Link className={classes.link} to={'/'}>Главная</Link>
+                    <Link className={classes.link} to={'/history'}>История</Link>
                 </Toolbar>
             </AppBar>
         </div>

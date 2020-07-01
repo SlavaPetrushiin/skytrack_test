@@ -12,14 +12,19 @@ const storageApi = {
         return images;
     },
 
-    // saveImages(image) {
-    //     debugger
-    //     if(localStorage.getItem(this.KEYS.images)){
-    //         const images = JSON.parse(localStorage.getItem(this.KEYS.images));
-    //         const newImages = [...images, image];
-    //         localStorage.setItem (this.KEYS.images, JSON.stringify(newImages));
-    //     }
-    // }
+    saveImages(image) {
+        if(!!this.getImages()){
+            const images = this.getImages();
+            const newImages = [...images, image];
+            localStorage.setItem (this.KEYS.images, JSON.stringify(newImages));
+        }
+    },
+
+    removeImage(id){
+        const images = this.getImages();
+        const newImages = images.filter(image => image.id !== id);
+        localStorage.setItem (this.KEYS.images, JSON.stringify(newImages));
+    }
 };
 
 export default storageApi;

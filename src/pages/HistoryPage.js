@@ -1,36 +1,45 @@
 import React, {useState} from 'react';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import PaginationImages from "../components/PaginationImages";
 import ImageList from "../components/ImageList";
+import {deleteImages} from "../redux/actions";
+import storage from "../api/storageApi";
 
 const HistoryPageContainer = () => {
     const images = useSelector(state => state.images);
-    const [quantityImages, setQuantityImages] = useState(5);
+    const dispatch = useDispatch();
+    const [quantityImages] = useState(5);
     const [currentPagination, setCurrentPagination] = useState(1);
     const paginationImagesCount = Math.ceil(images.images.length / quantityImages);
 
     const currentImages = currentPagination * quantityImages;
     const newImages = images.images.slice((currentPagination - 1) * quantityImages, currentImages);
 
-    const handleClick = (event, page) => {
+    const handleClickPagination = (event, page) => {
         setCurrentPagination(page);
     };
 
+    const handleDeleteImage = (event, id) => {
+        dispatch(deleteImages(id));
+        storage.removeImage(id);
+    };
+
     return <HistoryPage
-        handleClick={handleClick}
+        handleClickPagination={handleClickPagination}
         newImages={newImages}
         paginationImagesCount={paginationImagesCount}
+        handleDeleteImage={handleDeleteImage}
     />
 };
 
-const HistoryPage = ({handleClick, newImages, paginationImagesCount}) => {
+const HistoryPage = ({handleClickPagination, newImages, paginationImagesCount, handleDeleteImage}) => {
     return (
         <div>
             <PaginationImages
-                handleClick={handleClick}
+                handleClickPagination={handleClickPagination}
                 paginationImagesCount={paginationImagesCount}
             />
-            <ImageList images={newImages}/>
+            <ImageList images={newImages} handleDeleteImage={handleDeleteImage}/>
         </div>
     );
 };

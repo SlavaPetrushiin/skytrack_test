@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import CardMedia from '@material-ui/core/CardMedia';
 import {useDispatch, useSelector} from "react-redux";
 import {fetchImage} from "../redux/actions";
+import AlertError from "../components/Alert";
 
 
 const useStyles = makeStyles({
@@ -25,7 +26,7 @@ const MainPageContainer = () => {
 
     useEffect(() => {
         dispatch(fetchImage())
-    }, []);
+    }, [dispatch]);
 
     const handleClick = () => {
         dispatch(fetchImage())
@@ -37,26 +38,30 @@ const MainPageContainer = () => {
 
 const MainPage = (props) => {
     const classes = useStyles();
+    const error = useSelector(state => state.error.errorMessage);
 
     return (
-        <Card className={classes.root}>
-            <CardContent>
-                <CardMedia
-                    component={'div'}
-                    className={classes.media}
-                    image={props.image.image.url}
-                />
-            </CardContent>
-            <CardActions>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={props.handleClick}
-                >
-                    Загрузить
-                </Button>
-            </CardActions>
-        </Card>
+        <>
+            {!!error && <AlertError errorMessage={error}/>}
+            <Card className={classes.root}>
+                <CardContent>
+                    <CardMedia
+                        component={'div'}
+                        className={classes.media}
+                        image={props.image.image.url}
+                    />
+                </CardContent>
+                <CardActions>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={props.handleClick}
+                    >
+                        Загрузить
+                    </Button>
+                </CardActions>
+            </Card>
+        </>
     );
 };
 

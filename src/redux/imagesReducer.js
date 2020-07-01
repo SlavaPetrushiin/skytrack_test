@@ -1,4 +1,4 @@
-import {DOWNLOAD_IMAGES, FETCH_IMAGE_ERROR, FETCH_IMAGE_SUCCESS} from "./types";
+import {DELETE_IMAGE, DOWNLOAD_IMAGES, FETCH_IMAGE_SUCCESS} from "./types";
 
 const initialState = {
     image: {},
@@ -18,6 +18,14 @@ const imagesReducer = (state = initialState, action) => {
             return {
                 ...state,
                 images:  [...action.images],
+                error: null
+            };
+        case DELETE_IMAGE:
+            return {
+                ...state,
+                images:  state.images.filter((image) => {
+                    return image.id !== action.id
+                }),
                 error: null
             };
         default:

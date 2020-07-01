@@ -1,9 +1,10 @@
 import React from 'react';
+import Alert from '@material-ui/lab/Alert';
 
-const Alert = (props) => {
+const AlertError = (props) => {
     return (
-        <Alert severity="error">props.error</Alert>
+        <Alert severity="error">{props.errorMessage}</Alert>
     );
 };
 
-export default Alert;
+export default AlertError;

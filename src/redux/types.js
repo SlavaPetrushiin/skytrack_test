@@ -2,6 +2,5 @@ export const FETCH_IMAGE_SUCCESS = 'FETCH_IMAGE_SUCCESS';
 export const FETCH_IMAGE_ERROR = 'FETCH_IMAGE_ERROR';
 export const REQUEST_IMAGE = 'REQUEST_IMAGE';
 export const DOWNLOAD_IMAGES = 'DOWNLOAD_IMAGES';
+export const DELETE_IMAGE = 'DELETE_IMAGE';
 
-export const SHOW_ALERT = 'SHOW_ALERT';
-export const HIDE_ALERT = 'HIDE_ALERT';
